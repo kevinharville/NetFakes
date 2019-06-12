@@ -1,0 +1,25 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div id="favorites">
+    <h3>My Favorites</h3>
+    <div class="movie" *ngFor="let movie of this.myData.mylist">
+      <app-movie [title]="movie.title" [id]="movie.id" [img]="movie.img" buttonText="Remove" (remove)="removeItem(movie.id,this.myList)"></app-movie>
+    </div>
+  </div>
+  <div id="recommendations">
+    <h3>Recommendations</h3>
+    <div class="movie" *ngFor="let movie of this.myData.recommendations">
+      <app-movie [title]="movie.title" [id]="movie.id" [img]="movie.img" buttonText="Add" 
+      (add)="faveThis(movie.title, movie.id, movie.img)"></app-movie>
+    </div>
+  </div>
+  <div id="titles">
+    <ul>
+      <li class="movieTitle" *ngFor="let movie of this.myData.mylist">* {{movie.title}}
+      </li>
+    </ul>
+  </div>
+</div>
+<router-outlet></router-outlet>
